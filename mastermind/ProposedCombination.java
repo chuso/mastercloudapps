@@ -17,10 +17,6 @@ public class ProposedCombination extends Combination {
         return getColors()[position] == color;
     }
 
-    public boolean contains(Color color) {
-        return Arrays.asList(getColors()).contains(color);
-    }
-
     public void setResult(Result result) {
         this.result = result;
     }
