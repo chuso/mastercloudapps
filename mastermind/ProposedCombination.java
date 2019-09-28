@@ -25,6 +25,14 @@ public class ProposedCombination extends Combination {
         return result.isWinner();
     }
 
+    public void write() {
+        for (int i = 0; i < getColors().length; i++) {
+            getColors()[i].write();
+        }
+        System.out.print(" --> ");
+        this.result.write();
+    }
+
     private String readString() {
         Validator validator = new Validator();
         do {

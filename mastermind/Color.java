@@ -19,6 +19,10 @@ enum Color {
         this.number = number;
     }
 
+    public void write() {
+        System.out.print(this.getLetter());
+    }
+
     private char getLetter() {
         return letter;
     }
