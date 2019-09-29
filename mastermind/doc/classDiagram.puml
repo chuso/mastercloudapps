@@ -1,0 +1,80 @@
+class Mastermind {
+    -codeBreaker
+    -codeMaker
+    +play()
+}
+
+class CodeMaker {
+    +CodeMaker(CodeBreaker)
+    +prepare()
+    +answer()
+    +write()
+}
+class CodeBreaker{
+    -{static} MAX_ATTEMPTS
+    -attempts
+    -numberOfAttempts
+    +prepare()
+    +propose()
+    +getLastCodeBreaker()
+    +writeAttemps()
+    +writeProposedCombinations()
+    +isWinner()
+    +isLooser()
+    +isFinished()
+}
+
+class Combination {
+    #{static}SIZE
+    -colors
+    #contains(Color)
+    #setColor(position, Color)
+    #getColors()
+}
+
+enum Color {
+    +write()
+    +{static}fromLetter()
+    +{static}getRandomColor()
+}
+
+class SecretCombination {
+    +SecretCombination() // aleatorio
+    +calculateResult(ProposedCombination)
+    +write()
+}
+
+class ProposedCombination {
+    -result
+    +read()
+    +contains(Color, position)
+    +set(Result)
+    +isWinner()
+    +write()
+  }
+
+class Result {
+    -deads
+    -damaged
+    -size
+    +write()
+    +isWinner()
+}
+
+
+Mastermind *--> CodeMaker
+Mastermind *--> CodeBreaker
+
+CodeMaker --> CodeBreaker
+
+CodeBreaker o--> ProposedCombination
+CodeMaker o--> SecretCombination
+
+SecretCombination ..> ProposedCombination
+SecretCombination ..> Result
+Combination *--> Color
+
+Combination <|-- SecretCombination
+Combination <|-- ProposedCombination
+
+ProposedCombination o--> Result
