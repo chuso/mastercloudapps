@@ -1,4 +1,4 @@
-package mastermind;
+package mastermind.code;
 
 public class CodeBreaker {
 
