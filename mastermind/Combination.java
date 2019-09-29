@@ -4,10 +4,12 @@ import java.util.Arrays;
 
 abstract class Combination {
 
+    protected static final int SIZE = 4;
+
     private Color[] colors;
 
     public Combination() {
-        colors = new Color[4];
+        colors = new Color[Combination.SIZE];
     }
 
     public boolean contains(Color color) {

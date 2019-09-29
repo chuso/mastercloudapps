@@ -34,7 +34,7 @@ public class ProposedCombination extends Combination {
     }
 
     private String readString() {
-        Validator validator = new Validator();
+        Validator validator = new Validator(Combination.SIZE);
         do {
             System.out.print("Propose a combination: ");
             String combinationString = System.console().readLine();
@@ -50,6 +50,12 @@ public class ProposedCombination extends Combination {
 
     // TODO: replace this Validator with Notification: https://www.martinfowler.com/articles/replaceThrowWithNotification.html
     class Validator {
+
+        private int combinationSize;
+
+        public Validator(int combinationSize) {
+            this.combinationSize = combinationSize;
+        }
 
         public void check(String combination) throws IllegalArgumentException {
             if (!checkValidColors(combination)) {
@@ -73,7 +79,7 @@ public class ProposedCombination extends Combination {
         }
 
         private boolean checkLength(String combination) {
-            return combination.length() == 4;
+            return combination.length() == combinationSize;
         }
 
         private IllegalArgumentException buildInvalidArgumentException(String message) {

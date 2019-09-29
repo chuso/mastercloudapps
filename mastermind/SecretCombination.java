@@ -4,7 +4,7 @@ public class SecretCombination extends Combination {
 
     public SecretCombination() {
         super();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < Combination.SIZE; i++) {
             setColor(i, getRandomColorNotRepeated());
         }
     }
@@ -19,7 +19,7 @@ public class SecretCombination extends Combination {
                 damaged++;
             }
         }
-        proposedCombination.setResult(new Result(deads, damaged));
+        proposedCombination.setResult(new Result(deads, damaged, Combination.SIZE));
     }
 
     public void write() {

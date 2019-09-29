@@ -4,10 +4,12 @@ public class Result {
 
     private int deads;
     private int damaged;
+    private int size;
 
-    public Result(int deads, int damaged) {
+    public Result(int deads, int damaged, int size) {
         this.deads = deads;
         this.damaged = damaged;
+        this.size = size;
     }
 
     public void write() {
@@ -15,7 +17,7 @@ public class Result {
     }
 
     public boolean isWinner() {
-        return deads == 4;
+        return deads == size;
     }
 
 }
