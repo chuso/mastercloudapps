@@ -7,7 +7,7 @@ public class CodeBreaker {
     private ProposedCombination[] attempts;
     private int numberOfAttempts;
 
-    public void prepare() {
+    public void start() {
         this.attempts = new ProposedCombination[CodeBreaker.MAX_ATTEMPTS];
         numberOfAttempts = 0;
     }
@@ -40,13 +40,13 @@ public class CodeBreaker {
         return numberOfAttempts == CodeBreaker.MAX_ATTEMPTS;
     }
 
-    public boolean isFinished() {
+    public boolean isResumed() {
         String continueAnswer;
         do {
             System.out.print("Do you want to continue? (y/n): ");
             continueAnswer = System.console().readLine();
         } while (!continueAnswer.matches("[yn]"));
-        return continueAnswer.equals("n");
+        return continueAnswer.equals("y");
     }
 
 }

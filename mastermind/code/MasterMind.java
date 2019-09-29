@@ -17,7 +17,7 @@ public class MasterMind {
     public void play() {
         do {
             playGame();
-        } while (!codeBreaker.isFinished());
+        } while (codeBreaker.isResumed());
     }
 
     private void playGame() {
@@ -30,7 +30,7 @@ public class MasterMind {
 
     private void prepareGame() {
         codeMaker.prepare();
-        codeBreaker.prepare();
+        codeBreaker.start();
         System.out.println("----- MASTERMIND -----");
         codeMaker.write();
     }

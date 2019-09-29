@@ -14,14 +14,14 @@ class CodeBreaker{
     -{static} MAX_ATTEMPTS
     -attempts
     -numberOfAttempts
-    +prepare()
+    +start()
     +propose()
     +getLastCodeBreaker()
     +writeAttemps()
     +writeProposedCombinations()
     +isWinner()
     +isLooser()
-    +isFinished()
+    +isResumed()
 }
 
 class Combination {
