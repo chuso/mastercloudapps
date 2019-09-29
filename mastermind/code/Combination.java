@@ -1,4 +1,4 @@
-package mastermind;
+package mastermind.code;
 
 import java.util.Arrays;
 
