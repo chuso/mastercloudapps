@@ -1,0 +1,33 @@
+class TicTacToe {
+    -Board
+    -player1
+    -player2
+    +play()
+}
+
+class Player {
+    -Board
+    -Token
+    +Player(Board, Token)
+    +move()
+}
+
+class Board {
+    -Token[3][3]
+    +setToken(column, row, Token)
+    +write()
+    +hasThreeInARow()
+    +isCompleted()
+}
+
+enum Token
+
+Player --> Board
+
+TicTacToe *--> Board
+
+TicTacToe *--> "2" Player
+
+Board o--> Token
+
+Player ..> Token

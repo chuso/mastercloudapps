@@ -2,4 +2,5 @@
 
 Personal projects for the Master in Cloud Applications from the URJC.
 
-* [MasterMind](mastermind/README.md).
+* [MasterMind](mastermind/).
+* [Tic-Tac-Toe](tictactoe/).
