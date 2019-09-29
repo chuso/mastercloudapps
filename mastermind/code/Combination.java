@@ -12,7 +12,7 @@ abstract class Combination {
         colors = new Color[Combination.SIZE];
     }
 
-    public boolean contains(Color color) {
+    protected boolean contains(Color color) {
         return Arrays.asList(getColors()).contains(color);
     }
 
