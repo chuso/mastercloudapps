@@ -44,7 +44,6 @@ public class ProposedCombination extends Combination {
             } catch (IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
             }
-
         } while(true);
     }
 
