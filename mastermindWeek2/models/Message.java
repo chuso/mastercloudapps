@@ -1,21 +1,21 @@
-package mastermindWeek2;
+package mastermindWeek2.models;
 
 import mastermindWeek2.utils.Console;
 
 enum Message {
-	ATTEMPTS("#attempts attempt(s): "), 
-	SECRET("*"), 
-	RESUME("Do you want to continue"), 
-	RESULT(" --> #blacks blacks and #whites whites"), 
-	PROPOSED_COMBINATION("Propose a combination: "), 
-	TITLE("----- MASTERMIND -----"), 
-	WINNER("You've won!!! ;-)"), 
+	ATTEMPTS("#attempts attempt(s): "),
+	SECRET("*"),
+	RESUME("Do you want to continue"),
+	RESULT(" --> #blacks blacks and #whites whites"),
+	PROPOSED_COMBINATION("Propose a combination: "),
+	TITLE("----- MASTERMIND -----"),
+	WINNER("You've won!!! ;-)"),
 	LOOSER("You've lost!!! :-("),
 	NEW_LINE("\n");
 
 	private String message;
-	
-	static private Console console; 
+
+	static private Console console;
 	static {
 		Message.console = new Console();
 	}

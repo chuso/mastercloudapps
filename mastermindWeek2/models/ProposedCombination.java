@@ -1,4 +1,4 @@
-package mastermindWeek2;
+package mastermindWeek2.models;
 
 class ProposedCombination extends Combination {
 
@@ -22,8 +22,8 @@ class ProposedCombination extends Combination {
 					if (color == null) {
 						error = Error.WRONG_CHARACTERS;
 					} else {
-						for(int j=0; j< this.colors.size(); j++){
-							if (color == this.colors.get(j)){
+						for (int j = 0; j < this.colors.size(); j++) {
+							if (color == this.colors.get(j)) {
 								error = Error.DUPLICATED;
 							}
 						}
@@ -33,7 +33,7 @@ class ProposedCombination extends Combination {
 			}
 			if (error != null) {
 				error.writeln();
-				while (!this.colors.isEmpty()){
+				while (!this.colors.isEmpty()) {
 					this.colors.remove(0);
 				}
 			}

@@ -1,4 +1,4 @@
-package mastermindWeek2;
+package mastermindWeek2.models;
 
 import mastermindWeek2.utils.Console;
 
@@ -14,7 +14,7 @@ enum Error {
 	}
 
 	void writeln() {
-		new Console().writeln(this.message);		
+		new Console().writeln(this.message);
 	}
-	
+
 }

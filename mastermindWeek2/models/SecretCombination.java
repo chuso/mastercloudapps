@@ -1,4 +1,4 @@
-package mastermindWeek2;
+package mastermindWeek2.models;
 
 import java.util.Random;
 import java.util.Collections;
@@ -6,11 +6,11 @@ import java.util.Collections;
 class SecretCombination extends Combination {
 
 	SecretCombination() {
-		for(Color color : Color.values()){
+		for (Color color : Color.values()) {
 			this.colors.add(color);
 		}
 		Random random = new Random(System.currentTimeMillis());
-			final int erased = colors.size() - Combination.getWidth();
+		final int erased = colors.size() - Combination.getWidth();
 		for (int i = 0; i < erased; i++) {
 			this.colors.remove(random.nextInt(this.colors.size()));
 		}
@@ -19,7 +19,7 @@ class SecretCombination extends Combination {
 
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
-		for (int i=0; i<this.colors.size(); i++) {
+		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;
 			}

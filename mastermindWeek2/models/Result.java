@@ -1,8 +1,8 @@
-package mastermindWeek2;
+package mastermindWeek2.models;
 
 import mastermindWeek2.utils.WithConsoleModel;
 
-class Result extends WithConsoleModel{
+class Result extends WithConsoleModel {
 
 	private int blacks = 0;
 
@@ -22,5 +22,5 @@ class Result extends WithConsoleModel{
 	void writeln() {
 		Message.RESULT.writeln(this.blacks, this.whites);
 	}
-	
+
 }
