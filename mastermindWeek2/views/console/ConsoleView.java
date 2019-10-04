@@ -1,27 +1,25 @@
 package mastermindWeek2.views.console;
 
-import mastermindWeek2.controllers.ProposeController;
-import mastermindWeek2.controllers.ResumeController;
-import mastermindWeek2.controllers.StartController;
+import mastermindWeek2.controllers.Logic;
 import mastermindWeek2.utils.YesNoDialog;
 import mastermindWeek2.views.View;
 
 public class ConsoleView extends View {
 
-    public ConsoleView(ProposeController proposeController, ResumeController resumeController, StartController startController) {
-        super(proposeController, resumeController, startController);
+    public ConsoleView(Logic logic) {
+        super(logic);
     }
 
     @Override
     protected void start() {
         Message.TITLE.writeln();
-        new SecretCombinationView(this.startController).writeln();
+        new SecretCombinationView(logic).writeln();
     }
 
     @Override
     protected void move() {
-        proposeController.propose(ProposedCombinationReader.read());
-        new GameView(this.proposeController).writeln();
+        logic.propose(ProposedCombinationReader.read());
+        new GameView(logic).writeln();
     }
 
     @Override

@@ -1,20 +1,20 @@
 package mastermindWeek2.views.console;
 
-import mastermindWeek2.controllers.ProposeController;
+import mastermindWeek2.controllers.Logic;
 import mastermindWeek2.models.Result;
 
 public class ResultView {
 
-    private final ProposeController proposeController;
+    private final Logic logic;
     private final int index;
 
-    ResultView(ProposeController proposeController, int index) {
-        this.proposeController = proposeController;
+    ResultView(Logic logic, int index) {
+        this.logic = logic;
         this.index = index;
     }
 
     public void writeln() {
-        Result result = proposeController.getResult(index);
+        Result result = logic.getResult(index);
         Message.RESULT.writeln(result.getBlacks(), result.getWhites());
     }
 

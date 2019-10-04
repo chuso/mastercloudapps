@@ -1,19 +1,13 @@
 package mastermindWeek2.views;
 
-import mastermindWeek2.controllers.ProposeController;
-import mastermindWeek2.controllers.ResumeController;
-import mastermindWeek2.controllers.StartController;
+import mastermindWeek2.controllers.Logic;
 
 public abstract class View {
 
-    protected ProposeController proposeController;
-    protected ResumeController resumeController;
-    protected StartController startController;
+    protected Logic logic;
 
-    public View(ProposeController proposeController, ResumeController resumeController, StartController startController) {
-        this.proposeController = proposeController;
-        this.resumeController = resumeController;
-        this.startController = startController;
+    public View(Logic logic) {
+        this.logic = logic;
     }
 
     public void interact() {
@@ -23,11 +17,11 @@ public abstract class View {
             boolean finished;
             do {
                 this.move();
-                finished = proposeController.isGameFinished();
+                finished = logic.isGameFinished();
             } while (!finished);
             resume = this.resume();
             if (resume) {
-                resumeController.resume();
+                logic.resume();
             }
         } while (resume);
     }
