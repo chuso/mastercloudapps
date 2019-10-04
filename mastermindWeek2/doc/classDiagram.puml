@@ -1,0 +1,31 @@
+class MasterMind
+MasterMind *-down-> Logic
+MasterMind *-down-> View
+
+interface View
+View ..> Controller
+
+class ConsoleView
+View <|-down- ConsoleView
+ConsoleView *-down-> GameView
+ConsoleView *-down-> ResultView
+
+class Controller
+Controller <|-down- StartController
+Controller <|-down- ProposeController
+Controller <|-down- ResumeController
+
+class Logic
+Logic *-down-> StartController
+Logic *-down-> ProposeController
+Logic *-down-> ResumeController
+Logic *-down-> Game
+Logic *-down-> State
+
+interface ControllerVisitor
+
+ControllerVisitor <|-down- View
+Controller ..> ControllerVisitor
+
+Controller --> Game
+Controller --> State
