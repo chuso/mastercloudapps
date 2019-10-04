@@ -18,4 +18,8 @@ public class ResumeController extends Controller {
         }
     }
 
+    public void accept(ControllerVisitor controllerVisitor) {
+        controllerVisitor.visit(this);
+    }
+
 }

@@ -38,4 +38,8 @@ public class ProposeController extends Controller {
         return game.getAttempts();
     }
 
+    public void accept(ControllerVisitor controllerVisitor) {
+        controllerVisitor.visit(this);
+    }
+
 }

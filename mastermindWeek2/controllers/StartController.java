@@ -13,4 +13,8 @@ public class StartController extends Controller {
         this.state.next();
     }
 
+    public void accept(ControllerVisitor controllerVisitor) {
+        controllerVisitor.visit(this);
+    }
+
 }

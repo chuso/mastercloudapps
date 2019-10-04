@@ -20,4 +20,6 @@ public abstract class Controller {
         return game.getSecretCombination();
     }
 
+    public abstract void accept(ControllerVisitor controllerVisitor);
+
 }
