@@ -25,21 +25,16 @@ public class Game {
     }
 
     public boolean isWinner() {
-        return this.results.get(this.getAttemps() - 1).isWinner();
+        return this.results.get(this.getAttempts() - 1).isWinner();
     }
 
     public boolean isLoser() {
-        return this.getAttemps() == Game.MAX_LONG;
+        return this.getAttempts() == Game.MAX_LONG;
     }
 
-    public Error proposeCombination(String characters) {
-        ProposedCombination proposedCombination = new ProposedCombination();
-        Error error = proposedCombination.propose(characters);
-        if (error == null) {
-            this.proposedCombinations.add(proposedCombination);
-            this.results.add(this.secretCombination.getResult(proposedCombination));
-        }
-        return error;
+    public void proposeCombination(ProposedCombination proposedCombination) {
+        this.proposedCombinations.add(proposedCombination);
+        this.results.add(this.secretCombination.getResult(proposedCombination));
     }
 
     public void clear() {
@@ -48,7 +43,7 @@ public class Game {
         this.results = new ArrayList<Result>();
     }
 
-    public int getAttemps() {
+    public int getAttempts() {
         return proposedCombinations.size();
     }
 
