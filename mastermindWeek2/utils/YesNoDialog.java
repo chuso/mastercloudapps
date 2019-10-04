@@ -1,6 +1,6 @@
 package mastermindWeek2.utils;
 
-public class YesNoDialog  extends WithConsoleModel {
+public class YesNoDialog {
 
 	private static final char AFIRMATIVE = 'y';
 
@@ -15,10 +15,10 @@ public class YesNoDialog  extends WithConsoleModel {
 		char answer;
 		boolean ok;
 		do {
-			answer = this.console.readChar(YesNoDialog.QUESTION);
+			answer = IO.readChar(YesNoDialog.QUESTION);
 			ok = YesNoDialog.isAfirmative(answer) || YesNoDialog.isNegative(answer);
 			if (!ok) {
-				this.console.writeln(YesNoDialog.MESSAGE);
+				IO.writeln(YesNoDialog.MESSAGE);
 			}
 		} while (!ok);
 		return YesNoDialog.isAfirmative(answer);

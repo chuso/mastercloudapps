@@ -2,10 +2,8 @@ package mastermindWeek2.models;
 
 import java.util.List;
 import java.util.ArrayList;
-import mastermindWeek2.utils.WithConsoleModel;
-import mastermindWeek2.utils.YesNoDialog;
 
-public class Game extends WithConsoleModel {
+public class Game {
 
     private static final int MAX_LONG = 10;
     private SecretCombination secretCombination;
@@ -16,40 +14,32 @@ public class Game extends WithConsoleModel {
 	    this.clear();
     }
 
-    public void play() {
-        do {
-            Message.TITLE.writeln();
-            this.secretCombination.writeln();
-            do {
-                ProposedCombination proposedCombination = new ProposedCombination();
-                proposedCombination.read();
-                this.proposedCombinations.add(proposedCombination);
-                this.results.add(this.secretCombination.getResult(proposedCombination));
-                this.writeln();
-            } while (!isFinished());
-        } while (this.isResumed());
-    }
-
     public boolean isFinished() {
-        if (this.results.get(this.getAttemps() - 1).isWinner()) {
-            Message.WINNER.writeln();
+        if (isWinner()) {
             return true;
         }
-        if (this.getAttemps() == Game.MAX_LONG) {
-            Message.LOOSER.writeln();
+        if (isLoser()) {
             return true;
         }
         return false;
     }
-    
-    public boolean isResumed() {
-        boolean resumed;
-        Message.RESUME.write();
-        resumed = new YesNoDialog().read();
-        if (resumed) {
-            this.clear();
+
+    public boolean isWinner() {
+        return this.results.get(this.getAttemps() - 1).isWinner();
+    }
+
+    public boolean isLoser() {
+        return this.getAttemps() == Game.MAX_LONG;
+    }
+
+    public Error proposeCombination(String characters) {
+        ProposedCombination proposedCombination = new ProposedCombination();
+        Error error = proposedCombination.propose(characters);
+        if (error == null) {
+            this.proposedCombinations.add(proposedCombination);
+            this.results.add(this.secretCombination.getResult(proposedCombination));
         }
-        return resumed;
+        return error;
     }
 
     public void clear() {
@@ -58,18 +48,20 @@ public class Game extends WithConsoleModel {
         this.results = new ArrayList<Result>();
     }
 
-    private void writeln() {
-        this.console.writeln();
-        Message.ATTEMPTS.writeln(this.getAttemps());
-        this.secretCombination.writeln();
-        for (int i = 0; i < this.getAttemps(); i++) {
-            this.proposedCombinations.get(i).write();
-            this.results.get(i).writeln();
-        }
+    public int getAttemps() {
+        return proposedCombinations.size();
     }
 
-    private int getAttemps() {
-    return this.proposedCombinations.size();
+    public SecretCombination getSecretCombination() {
+        return secretCombination;
+    }
+
+    public ProposedCombination getProposedCombination(int i) {
+        return proposedCombinations.get(i);
+    }
+
+    public Result getResult(int i) {
+        return results.get(i);
     }
 
 }

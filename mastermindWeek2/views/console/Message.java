@@ -1,6 +1,6 @@
-package mastermindWeek2.models;
+package mastermindWeek2.views.console;
 
-import mastermindWeek2.utils.Console;
+import mastermindWeek2.utils.IO;
 
 enum Message {
 	ATTEMPTS("#attempts attempt(s): "),
@@ -15,29 +15,24 @@ enum Message {
 
 	private String message;
 
-	static private Console console;
-	static {
-		Message.console = new Console();
-	}
-
 	private Message(String message) {
 		this.message = message;
 	}
 
 	void write() {
-		Message.console.write(this.message);
+		IO.write(this.message);
 	}
 
 	void writeln() {
-		Message.console.writeln(this.message);
+		IO.writeln(this.message);
 	}
 
 	void writeln(int attempts) {
-		Message.console.writeln(this.message.replaceAll("#attempts", "" + attempts));
+		IO.writeln(this.message.replaceAll("#attempts", "" + attempts));
 	}
 
 	void writeln(int blacks, int whites) {
-		Message.console.writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
+		IO.writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
 	}
 
 }

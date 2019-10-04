@@ -2,9 +2,8 @@ package mastermindWeek2.models;
 
 import java.util.List;
 import java.util.ArrayList;
-import mastermindWeek2.utils.WithConsoleModel;
 
-abstract class Combination extends WithConsoleModel {
+abstract class Combination {
 
 	private static final int WIDTH = 4;
 
@@ -12,6 +11,10 @@ abstract class Combination extends WithConsoleModel {
 
 	protected Combination() {
 		this.colors = new ArrayList<Color>();
+	}
+
+	public List<Color> getColors() {
+		return colors;
 	}
 
 	static int getWidth() {

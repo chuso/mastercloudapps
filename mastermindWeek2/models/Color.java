@@ -1,8 +1,6 @@
 package mastermindWeek2.models;
 
-import mastermindWeek2.utils.Console;
-
-enum Color {
+public enum Color {
     RED('r'),
     BLUE('b'),
     YELLOW('y'),
@@ -14,6 +12,10 @@ enum Color {
 
     private Color(char initial) {
         this.initial = initial;
+    }
+
+    public char getInitial() {
+        return initial;
     }
 
     static String allInitials() {
@@ -40,10 +42,6 @@ enum Color {
 
     static int length() {
         return Color.values().length;
-    }
-
-    void write() {
-        new Console().write(this.initial);
     }
 
 }

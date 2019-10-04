@@ -1,8 +1,6 @@
 package mastermindWeek2.models;
 
-import mastermindWeek2.utils.WithConsoleModel;
-
-class Result extends WithConsoleModel {
+public class Result {
 
 	private int blacks = 0;
 
@@ -19,8 +17,12 @@ class Result extends WithConsoleModel {
 		return this.blacks == Combination.getWidth();
 	}
 
-	void writeln() {
-		Message.RESULT.writeln(this.blacks, this.whites);
+	public int getBlacks() {
+		return blacks;
+	}
+
+	public int getWhites() {
+		return whites;
 	}
 
 }
