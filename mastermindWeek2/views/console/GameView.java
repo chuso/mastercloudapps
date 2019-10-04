@@ -1,29 +1,29 @@
 package mastermindWeek2.views.console;
 
-import mastermindWeek2.controllers.Logic;
+import mastermindWeek2.controllers.ProposeController;
 import mastermindWeek2.utils.IO;
 
 public class GameView {
 
-    private final Logic logic;
+    private final ProposeController proposeController;
 
-    public GameView(Logic logic) {
-        this.logic = logic;
+    public GameView(ProposeController proposeController) {
+        this.proposeController = proposeController;
     }
 
     public void writeln() {
         IO.writeln();
-        Message.ATTEMPTS.writeln(logic.getAttempts());
+        Message.ATTEMPTS.writeln(proposeController.getAttempts());
 
-        new SecretCombinationView(logic).writeln();
-        for (int i = 0; i < logic.getAttempts(); i++) {
-            new ProposedCombinationView(logic, i).write();
-            new ResultView(logic, i).writeln();
+        new SecretCombinationView(proposeController).writeln();
+        for (int i = 0; i < proposeController.getAttempts(); i++) {
+            new ProposedCombinationView(proposeController, i).write();
+            new ResultView(proposeController, i).writeln();
         }
-        if (logic.isWinner()) {
+        if (proposeController.isWinner()) {
             Message.WINNER.writeln();
         }
-        if (logic.isLoser()) {
+        if (proposeController.isLoser()) {
             Message.LOOSER.writeln();
         }
     }

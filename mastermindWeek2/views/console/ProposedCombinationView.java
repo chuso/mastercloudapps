@@ -1,21 +1,21 @@
 package mastermindWeek2.views.console;
 
-import mastermindWeek2.controllers.Logic;
+import mastermindWeek2.controllers.ProposeController;
 import mastermindWeek2.models.ProposedCombination;
 import mastermindWeek2.models.Color;
 
 public class ProposedCombinationView {
 
-    private final Logic logic;
+    private final ProposeController proposeController;
     private final int index;
 
-    public ProposedCombinationView(Logic logic, int index) {
-        this.logic = logic;
+    public ProposedCombinationView(ProposeController proposeController, int index) {
+        this.proposeController = proposeController;
         this.index = index;
     }
 
     public void write() {
-      ProposedCombination proposedCombination = logic.getProposedCombination(index);
+      ProposedCombination proposedCombination = proposeController.getProposedCombination(index);
 		  for (Color color : proposedCombination.getColors()) {
         new ColorView(color).write();
 		  }

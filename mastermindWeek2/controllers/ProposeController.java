@@ -1,17 +1,21 @@
 package mastermindWeek2.controllers;
 
 import mastermindWeek2.models.Game;
+import mastermindWeek2.models.State;
 import mastermindWeek2.models.Result;
 import mastermindWeek2.models.ProposedCombination;
 
 public class ProposeController extends Controller {
 
-    public ProposeController(Game game) {
-        super(game);
+    public ProposeController(Game game, State state) {
+        super(game, state);
     }
 
     public void propose(ProposedCombination proposedCombination) {
         this.game.proposeCombination(proposedCombination);
+        if (this.game.isFinished()) {
+            this.state.next();
+        }
     }
 
     public ProposedCombination getProposedCombination(int i) {
@@ -32,10 +36,6 @@ public class ProposeController extends Controller {
 
     public int getAttempts() {
         return game.getAttempts();
-    }
-
-    public boolean isGameFinished() {
-        return this.game.isFinished();
     }
 
 }
