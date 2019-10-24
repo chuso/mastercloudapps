@@ -1,6 +1,6 @@
 package mastermindWeek3.mastermind.controllers;
 
-import mastermindWeek3.mastermind.distributed.TCPIP;
+import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 import mastermindWeek3.mastermind.models.Session;
 
 public class ResumeController extends AcceptorController {

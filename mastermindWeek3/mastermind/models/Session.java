@@ -4,7 +4,7 @@ import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.santaTecla.utils.Registry;
-import mastermindWeek3.mastermind.distributed.TCPIP;
+import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 
 public class Session {
 

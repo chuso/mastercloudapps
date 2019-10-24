@@ -1,7 +1,7 @@
 package mastermindWeek3.mastermind.controllers;
 
 import java.util.List;
-import mastermindWeek3.mastermind.distributed.TCPIP;
+import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.mastermind.types.Error;
 import mastermindWeek3.mastermind.models.Session;

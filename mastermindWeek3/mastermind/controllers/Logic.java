@@ -3,7 +3,7 @@ package mastermindWeek3.mastermind.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import mastermindWeek3.mastermind.distributed.TCPIP;
+import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 import mastermindWeek3.mastermind.models.Session;
 import mastermindWeek3.mastermind.models.StateValue;
 

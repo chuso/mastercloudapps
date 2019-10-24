@@ -1,4 +1,4 @@
-package mastermindWeek3.mastermind.distributed;
+package mastermindWeek3.mastermind.distributed.dispatchers;
 
 import java.io.IOException;
 import java.net.ServerSocket;
