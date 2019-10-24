@@ -1,6 +1,7 @@
 package mastermindWeek3.mastermind.controllers;
 
 import java.util.List;
+import mastermindWeek3.mastermind.distributed.TCPIP;
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.mastermind.types.Error;
 import mastermindWeek3.mastermind.models.Session;
@@ -11,8 +12,8 @@ public class PlayController extends AcceptorController {
     private UndoController undoController;
     private RedoController redoController;
 
-    PlayController(Session session) {
-        super(session);
+    PlayController(Session session, TCPIP tcpip) {
+        super(session, tcpip);
         this.proposalController = new ProposalController(session);
         this.undoController = new UndoController(session);
         this.redoController = new RedoController(session);

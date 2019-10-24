@@ -4,6 +4,7 @@ import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.santaTecla.utils.Registry;
+import mastermindWeek3.mastermind.distributed.TCPIP;
 
 public class Session {
 
@@ -13,10 +14,13 @@ public class Session {
 
     private Registry registry;
 
-    public Session() {
+    private TCPIP tcpip;
+
+    public Session(TCPIP tcpip) {
         this.state = new State();
         this.game = new Game();
         this.registry = new Registry(this.game);
+        this.tcpip = tcpip;
     }
 
     public void resume() {
