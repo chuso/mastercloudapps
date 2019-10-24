@@ -3,7 +3,9 @@ package mastermindWeek3.mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Memento {
+import mastermindWeek3.santaTecla.utils.Memento;
+
+public class GameMemento extends Memento {
 
     private SecretCombination secretCombination;
 
@@ -13,7 +15,7 @@ public class Memento {
 
     private int attempts;
 
-    public Memento() {
+    public GameMemento() {
         this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
     }

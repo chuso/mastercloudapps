@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
+import mastermindWeek3.santaTecla.utils.Memento;
 
 public class Game {
 
@@ -64,7 +65,7 @@ public class Game {
 	}
 
 	public Memento createMemento() {
-		Memento memento = new Memento();
+		GameMemento memento = new GameMemento();
 		memento.setSecretCombination(this.secretCombination.copy());
 		for (ProposedCombination proposedCombination : proposedCombinations) {
 			memento.addProposedCombination(proposedCombination.copy());
@@ -77,15 +78,16 @@ public class Game {
 	}
 
 	public void restore(Memento memento) {
-		this.secretCombination = memento.getSecretCombination().copy();
-		this.attempts = memento.getAttempts();
+		GameMemento gameMemento = (GameMemento) memento;
+		this.secretCombination = gameMemento.getSecretCombination().copy();
+		this.attempts = gameMemento.getAttempts();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		for (int i = 0; i < attempts; i++) {
-			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
+			this.proposedCombinations.add(gameMemento.getProposedCombination(i).copy());
 		}
 		this.results = new ArrayList<Result>();
 		for (int i = 0; i < attempts; i++) {
-			this.results.add(memento.getResult(i).copy());
+			this.results.add(gameMemento.getResult(i).copy());
 		}
 	}
 
