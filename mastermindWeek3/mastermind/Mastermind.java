@@ -1,6 +1,6 @@
 package mastermindWeek3.mastermind;
 
-import mastermindWeek3.mastermind.controllers.Controller;
+import mastermindWeek3.mastermind.controllers.AcceptorController;
 import mastermindWeek3.mastermind.controllers.Logic;
 import mastermindWeek3.mastermind.views.View;
 
@@ -18,7 +18,7 @@ public abstract class Mastermind {
 	protected abstract View createView();
 
 	protected void play() {
-		Controller controller;
+		AcceptorController controller;
 		do {
 			controller = this.logic.getController();
 			if (controller != null){

@@ -3,7 +3,7 @@ package mastermindWeek3.mastermind.controllers;
 import mastermindWeek3.mastermind.models.Game;
 import mastermindWeek3.mastermind.models.State;
 
-public class ResumeController extends Controller {
+public class ResumeController extends AcceptorController {
 
 	public ResumeController(Game game, State state) {
 		super(game, state);

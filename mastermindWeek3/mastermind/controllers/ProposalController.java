@@ -63,10 +63,5 @@ public class ProposalController extends Controller {
 	public int getWhites(int position) {
 		return this.game.getWhites(position);
 	}
-	
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
-	}
 
 }
