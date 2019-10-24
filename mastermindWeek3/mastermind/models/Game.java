@@ -63,4 +63,30 @@ public class Game {
 		return Combination.getWidth();
 	}
 
+	public Memento createMemento() {
+		Memento memento = new Memento();
+		memento.setSecretCombination(this.secretCombination.copy());
+		for (ProposedCombination proposedCombination : proposedCombinations) {
+			memento.addProposedCombination(proposedCombination.copy());
+		}
+		for (Result result : results) {
+			memento.addResult(result.copy());
+		}
+		memento.setAttempts(attempts);
+		return memento;
+	}
+
+	public void restore(Memento memento) {
+		this.secretCombination = memento.getSecretCombination().copy();
+		this.attempts = memento.getAttempts();
+		this.proposedCombinations = new ArrayList<ProposedCombination>();
+		for (int i = 0; i < attempts; i++) {
+			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
+		}
+		this.results = new ArrayList<Result>();
+		for (int i = 0; i < attempts; i++) {
+			this.results.add(memento.getResult(i).copy());
+		}
+	}
+
 }
