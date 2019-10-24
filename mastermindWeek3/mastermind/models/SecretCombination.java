@@ -34,4 +34,10 @@ class SecretCombination extends Combination {
 		return new Result(blacks, whites - blacks);
 	}
 
+	public SecretCombination copy() {
+		SecretCombination copy = new SecretCombination();
+		copy.copyColorsFrom(this);
+		return copy;
+	}
+
 }

@@ -6,6 +6,9 @@ import mastermindWeek3.mastermind.types.Color;
 
 class ProposedCombination extends Combination {
 
+	private ProposedCombination() {
+	}
+
 	ProposedCombination(List<Color> colors) {
 		this.colors = colors;
 	}
@@ -21,6 +24,12 @@ class ProposedCombination extends Combination {
 			}
 		}
 		return false;
+	}
+
+	public ProposedCombination copy() {
+		ProposedCombination copy = new ProposedCombination();
+		copy.copyColorsFrom(this);
+		return copy;
 	}
 
 }
