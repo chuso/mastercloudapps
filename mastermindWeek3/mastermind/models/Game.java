@@ -5,8 +5,9 @@ import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.santaTecla.utils.Memento;
+import mastermindWeek3.santaTecla.utils.Originator;;
 
-public class Game {
+public class Game implements Originator {
 
 	private static final int MAX_LONG = 10;
 
