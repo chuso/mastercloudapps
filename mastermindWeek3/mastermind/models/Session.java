@@ -3,6 +3,7 @@ package mastermindWeek3.mastermind.models;
 import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
+import mastermindWeek3.santaTecla.utils.Registry;
 
 public class Session {
 
