@@ -3,8 +3,7 @@ package mastermindWeek3.mastermind.controllers;
 import java.util.List;
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.mastermind.types.Error;
-import mastermindWeek3.mastermind.models.Game;
-import mastermindWeek3.mastermind.models.State;
+import mastermindWeek3.mastermind.models.Session;
 
 public class PlayController extends AcceptorController {
 
@@ -12,11 +11,11 @@ public class PlayController extends AcceptorController {
     private UndoController undoController;
     private RedoController redoController;
 
-    PlayController(Game game, State state) {
-        super(game, state);
-        this.proposalController = new ProposalController(game, state);
-        this.undoController = new UndoController();
-        this.redoController = new RedoController();
+    PlayController(Session session) {
+        super(session);
+        this.proposalController = new ProposalController(session);
+        this.undoController = new UndoController(session);
+        this.redoController = new RedoController(session);
     }
 
     public Error addProposedCombination(List<Color> colors) {
