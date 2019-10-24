@@ -9,10 +9,10 @@ class RedoController extends Controller {
     }
 
     public void redo() {
-        System.out.println("Redo");
+        this.session.redo();
     }
 
     public boolean redoable() {
-        return false;
+        return this.session.redoable();
     }
 }

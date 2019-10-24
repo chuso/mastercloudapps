@@ -9,10 +9,10 @@ class UndoController extends Controller {
     }
 
     public void undo() {
-        System.out.println("Undo");
+        this.session.undo();
     }
 
     public boolean undoable() {
-        return false;
+        return this.session.undoable();
     }
 }
