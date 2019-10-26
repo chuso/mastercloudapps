@@ -5,6 +5,7 @@ import java.util.List;
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.santaTecla.utils.Registry;
 import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
+import mastermindWeek3.mastermind.types.Error;
 
 public class Session {
 
@@ -53,9 +54,12 @@ public class Session {
         this.registry.redo(this.game);
     }
 
-    public void addProposedCombination(List<Color> colors) {
-        game.addProposedCombination(colors);
-        this.registry.registry();
+    public Error addProposedCombination(List<Color> colors) {
+        Error error = game.addProposedCombination(colors);
+        if (error == null) {
+            this.registry.registry();
+        }
+        return error;
     }
 
     public boolean isLooser() {
