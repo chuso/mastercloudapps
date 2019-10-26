@@ -14,7 +14,8 @@ class SecretCombinationView extends WithConsoleView {
 	}
 	
 	void writeln() {
-		for (int i = 0; i < this.controller.getWidth(); i++) {
+		int width = this.controller.getWidth();
+		for (int i = 0; i < width; i++) {
 			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
