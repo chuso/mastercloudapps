@@ -17,11 +17,11 @@ class CombinationReader {
     }
 
     public List<Color> read() {
-		String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
-		List<Color> colors = new ArrayList<Color>();
-		for (int i=0; i<characters.length(); i++) {
-			colors.add(ColorView.getInstance(characters.charAt(i)));
-		}
-		return colors;
+        String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
+        List<Color> colors = new ArrayList<Color>();
+        for (int i = 0; i < characters.length(); i++) {
+            colors.add(ColorView.getInstance(characters.charAt(i)));
+        }
+        return colors;
     }
 }
