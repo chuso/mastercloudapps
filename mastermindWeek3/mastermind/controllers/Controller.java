@@ -46,4 +46,12 @@ public abstract class Controller {
 		return this.session.getWidth();
 	}
 
+	public String getName() {
+        return this.session.getName();
+    }
+
+    public void setName(String name) {
+        this.session.setName(name);
+	}
+
 }

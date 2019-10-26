@@ -14,11 +14,18 @@ public class SessionImplementation implements Session {
 
     private Registry registry;
 
+    private String name;
 
     public SessionImplementation() {
         this.state = new State();
         this.game = new Game();
         this.registry = new Registry(this.game);
+    }
+
+    public void load(String name) {
+        this.name = name;
+        this.state.setStateValue(StateValue.IN_GAME);
+        // TODO
     }
 
     public void resume() {
@@ -53,6 +60,26 @@ public class SessionImplementation implements Session {
             this.registry.registry();
         }
         return error;
+    }
+
+    public void save() {
+        this.save(this.name);
+    }
+
+    public void save(String name) {
+        // TODO
+    }
+
+    public boolean hasName() {
+        return this.name != null;
+    }
+
+    public String[] getGamesNames() {
+        return new String[] { "test" };
+    }
+
+    public boolean exists(String name) {
+        return name.equals("test");
     }
 
     @Override
@@ -93,6 +120,16 @@ public class SessionImplementation implements Session {
     @Override
     public int getWidth() {
         return this.game.getWidth();
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

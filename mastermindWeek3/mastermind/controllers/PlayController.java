@@ -21,6 +21,8 @@ public abstract class PlayController extends AcceptorController {
 
     public abstract boolean redoable();
 
+    public abstract void next();
+
     @Override
     public void accept(ControllersVisitor controllersVisitor) {
         controllersVisitor.visit(this);

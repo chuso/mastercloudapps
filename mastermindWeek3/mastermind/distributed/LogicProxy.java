@@ -14,6 +14,7 @@ public class LogicProxy extends Logic {
 		this.session = new SessionProxy(tcpip);
 		this.controllers.put(StateValue.INITIAL, new StartControllerProxy(session, tcpip));
 		this.controllers.put(StateValue.IN_GAME, new PlayControllerProxy(session, tcpip));
+		this.controllers.put(StateValue.SAVING, new SaveControllerProxy(session, tcpip));
 		this.controllers.put(StateValue.FINAL, new ResumeControllerProxy(session, tcpip));
 		this.controllers.put(StateValue.EXIT, null);
 	}

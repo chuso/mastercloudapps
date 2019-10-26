@@ -21,4 +21,8 @@ public interface Session {
 
     public int getWidth();
 
+    public String getName();
+
+    public void setName(String title);
+
 }
