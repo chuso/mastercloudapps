@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import mastermindWeek3.mastermind.types.Color;
+import mastermindWeek3.mastermind.types.Error;
+
 public class TCPIP extends mastermindWeek3.santaTecla.utils.TCPIP {
 
     private static final int PORT = 2020;
@@ -41,6 +44,36 @@ public class TCPIP extends mastermindWeek3.santaTecla.utils.TCPIP {
         }
     }
 
-    // TODO: implement sender and receivers methods
+    public void send(Error error) {
+        if (error == null) {
+            this.send("null");
+        } else {
+            this.send(error.name());
+        }
+    }
+
+    public Error receiveError() {
+        String error = this.receiveLine();
+        if (error.equals("null")) {
+            return null;
+        }
+        return Error.valueOf(error);
+    }
+
+    public void send(Color color) {
+        if (color == null) {
+            this.send("null");
+        } else {
+            this.send(color.name());
+        }
+    }
+
+    public Color receiveColor() {
+        String color = this.receiveLine();
+        if (color.equals("null")) {
+            return null;
+        }
+        return Color.valueOf(color);
+    }
 
 }
