@@ -9,8 +9,10 @@ import mastermindWeek3.mastermind.controllers.implementation.ResumeControllerImp
 import mastermindWeek3.mastermind.distributed.StartControllerProxy;
 import mastermindWeek3.mastermind.distributed.PlayControllerProxy;
 import mastermindWeek3.mastermind.distributed.ResumeControllerProxy;
+import mastermindWeek3.mastermind.distributed.SessionProxy;
 import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 import mastermindWeek3.mastermind.models.Session;
+import mastermindWeek3.mastermind.models.SessionImplementation;
 import mastermindWeek3.mastermind.models.StateValue;
 
 public class Logic {
@@ -25,7 +27,7 @@ public class Logic {
 		} else {
 			this.tcpip = TCPIP.createClientSocket();
 		}
-		this.session = new Session(this.tcpip);
+		this.session = isStandalone ? new SessionImplementation() : new SessionProxy(tcpip);
 		this.controllers = new HashMap<StateValue, AcceptorController>();
 		this.controllers.put(StateValue.INITIAL, isStandalone ? new StartControllerImplementation(this.session) : new StartControllerProxy(session, tcpip));
 		this.controllers.put(StateValue.IN_GAME, isStandalone ? new PlayControllerImplementation(this.session) : new PlayControllerProxy(session, tcpip));

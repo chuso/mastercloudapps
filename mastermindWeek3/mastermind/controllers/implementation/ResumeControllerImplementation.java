@@ -1,6 +1,7 @@
 package mastermindWeek3.mastermind.controllers.implementation;
 
 import mastermindWeek3.mastermind.models.Session;
+import mastermindWeek3.mastermind.models.SessionImplementation;
 import mastermindWeek3.mastermind.controllers.ResumeController;
 import mastermindWeek3.mastermind.controllers.ControllersVisitor;
 
@@ -12,9 +13,9 @@ public class ResumeControllerImplementation extends ResumeController {
 
     public void resume(boolean newGame) {
         if (newGame) {
-            this.session.resume();
+            ((SessionImplementation) this.session).resume();
         } else {
-            this.session.next();
+            ((SessionImplementation) this.session).next();
         }
     }
 

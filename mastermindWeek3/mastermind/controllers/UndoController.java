@@ -1,6 +1,7 @@
 package mastermindWeek3.mastermind.controllers;
 
 import mastermindWeek3.mastermind.models.Session;
+import mastermindWeek3.mastermind.models.SessionImplementation;;
 
 public class UndoController extends Controller {
 
@@ -9,10 +10,10 @@ public class UndoController extends Controller {
     }
 
     public void undo() {
-        this.session.undo();
+        ((SessionImplementation) this.session).undo();
     }
 
     public boolean undoable() {
-        return this.session.undoable();
+        return ((SessionImplementation) this.session).undoable();
     }
 }

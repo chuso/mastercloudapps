@@ -2,6 +2,7 @@ package mastermindWeek3.mastermind.controllers.implementation;
 
 import mastermindWeek3.mastermind.controllers.StartController;
 import mastermindWeek3.mastermind.models.Session;
+import mastermindWeek3.mastermind.models.SessionImplementation;
 
 public class StartControllerImplementation extends StartController {
 
@@ -11,7 +12,7 @@ public class StartControllerImplementation extends StartController {
 
     @Override
     public void start() {
-        this.session.next();
+        ((SessionImplementation) this.session).next();
     }
 
 }
