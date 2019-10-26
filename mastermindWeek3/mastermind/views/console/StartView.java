@@ -7,13 +7,15 @@ import mastermindWeek3.mastermind.views.console.menu.StartMenu;
 
 class StartView extends WithConsoleView {
 
-	private SecretCombinationView secretCombinationView;
-
 	void interact(StartController startController) {
 		new StartMenu(startController).execute();
 		this.console.writeln(MessageView.TITLE.getMessage());
-		this.secretCombinationView = new SecretCombinationView(startController);
-		this.secretCombinationView.writeln();
+
+		if (startController.getAttempts() == 0) {
+			new SecretCombinationView(startController).writeln();
+		} else {
+			new ProposalView(startController).writeln();
+		}
 	}
 
 }

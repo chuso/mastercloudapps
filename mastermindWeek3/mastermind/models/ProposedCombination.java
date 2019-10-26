@@ -6,7 +6,7 @@ import mastermindWeek3.mastermind.types.Color;
 
 class ProposedCombination extends Combination {
 
-	private ProposedCombination() {
+	public ProposedCombination() {
 	}
 
 	ProposedCombination(List<Color> colors) {

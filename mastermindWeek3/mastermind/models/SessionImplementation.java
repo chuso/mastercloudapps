@@ -1,5 +1,6 @@
 package mastermindWeek3.mastermind.models;
 
+import java.io.*;
 import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
@@ -7,6 +8,19 @@ import mastermindWeek3.santaTecla.utils.Registry;
 import mastermindWeek3.mastermind.types.Error;
 
 public class SessionImplementation implements Session {
+
+    public static final String EXTENSION = ".mm";
+
+    public static final String DIRECTORY = System.getProperty("user.dir") + "/partidas";
+
+    private static File directory;
+
+    static {
+        SessionImplementation.directory = new File(SessionImplementation.DIRECTORY);
+        if (!SessionImplementation.directory.exists()) {
+            SessionImplementation.directory.mkdir();
+        }
+    }
 
     private State state;
 
@@ -24,8 +38,19 @@ public class SessionImplementation implements Session {
 
     public void load(String name) {
         this.name = name;
+        File file = new File(SessionImplementation.directory, name);
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            this.game.load(bufferedReader);
+            this.registry.reset();
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.state.setStateValue(StateValue.IN_GAME);
-        // TODO
+        if (this.isLooser() || this.isWinner()) {
+            this.state.setStateValue(StateValue.FINAL);
+        }
     }
 
     public void resume() {
@@ -67,7 +92,17 @@ public class SessionImplementation implements Session {
     }
 
     public void save(String name) {
-        // TODO
+        if (!name.endsWith(SessionImplementation.EXTENSION)) {
+            name = name + SessionImplementation.EXTENSION;
+        }
+        File file = new File(SessionImplementation.directory, name);
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            this.game.save(fileWriter);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean hasName() {
@@ -75,11 +110,16 @@ public class SessionImplementation implements Session {
     }
 
     public String[] getGamesNames() {
-        return new String[] { "test" };
+        return SessionImplementation.directory.list();
     }
 
     public boolean exists(String name) {
-        return name.equals("test");
+        for (String auxName : this.getGamesNames()) {
+            if (auxName.equals(name + SessionImplementation.EXTENSION)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

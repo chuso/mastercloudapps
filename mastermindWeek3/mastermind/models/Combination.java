@@ -1,5 +1,8 @@
 package mastermindWeek3.mastermind.models;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,29 @@ public abstract class Combination {
 
 	public static int getWidth() {
 		return Combination.WIDTH;
+	}
+
+	void save(FileWriter fileWriter) {
+		try {
+			fileWriter.write(this.colors.size() + "\n");
+			for (int i = 0; i < this.colors.size(); i++) {
+				this.colors.get(i).save(fileWriter);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	void load(BufferedReader bufferedReader) {
+		try {
+			this.colors = new ArrayList<Color>();
+			Integer size = Integer.valueOf(bufferedReader.readLine());
+			for (int i = 0; i < size; i++) {
+				this.colors.add(Color.valueOf(bufferedReader.readLine()));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
