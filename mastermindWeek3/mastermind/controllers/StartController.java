@@ -2,6 +2,7 @@ package mastermindWeek3.mastermind.controllers;
 
 import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
 import mastermindWeek3.mastermind.models.Session;
+import mastermindWeek3.mastermind.distributed.dispatchers.FrameType;
 
 public class StartController extends AcceptorController {
 
@@ -10,7 +11,11 @@ public class StartController extends AcceptorController {
 	}
 
 	public void start() {
-		this.session.next();
+		if (this.tcpip == null) {
+			this.session.next();
+		} else {
+			this.tcpip.send(FrameType.START.name());
+		}
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package mastermindWeek3.mastermind.models;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import mastermindWeek3.mastermind.types.Color;
 import mastermindWeek3.santaTecla.utils.Registry;
 import mastermindWeek3.mastermind.distributed.dispatchers.TCPIP;
+import mastermindWeek3.mastermind.distributed.dispatchers.FrameType;
 import mastermindWeek3.mastermind.types.Error;
 
 public class Session {
@@ -35,7 +37,12 @@ public class Session {
     }
 
     public StateValue getValueState() {
-        return this.state.getValueState();
+        if (this.tcpip == null) {
+            return this.state.getValueState();
+        } else {
+            this.tcpip.send(FrameType.STATE.name());
+            return StateValue.values()[this.tcpip.receiveInt()];
+        }
     }
 
     public boolean undoable() {
@@ -63,31 +70,74 @@ public class Session {
     }
 
     public boolean isLooser() {
-        return this.game.isLooser();
+        if (this.tcpip == null) {
+            return this.game.isLooser();
+        } else {
+            this.tcpip.send(FrameType.ISLOSER.name());
+            return this.tcpip.receiveBoolean();
+        }
     }
 
     public boolean isWinner() {
-        return this.game.isWinner();
+        if (this.tcpip == null) {
+            return this.game.isWinner();
+        } else {
+            this.tcpip.send(FrameType.ISWINNER.name());
+            return this.tcpip.receiveBoolean();
+        }
     }
 
     public int getAttempts() {
-		return this.game.getAttempts();
-	}
+        if (this.tcpip == null) {
+            return this.game.getAttempts();
+        } else {
+            this.tcpip.send(FrameType.GETATTEMPTS.name());
+            return this.tcpip.receiveInt();
+        }
+    }
 
-	public List<Color> getColors(int position) {
-		return game.getColors(position);
-	}
+    public List<Color> getColors(int position) {
+        if (this.tcpip == null) {
+            return game.getColors(position);
+        } else {
+            this.tcpip.send(FrameType.GETCOLORS.name());
+            this.tcpip.send(position);
+            List<Color> colors = new ArrayList<Color>();
+            int size = this.tcpip.receiveInt();
+            for (int i = 0; i < size; i++) {
+                colors.add(this.tcpip.receiveColor());
+            }
+            return colors;
+        }
+    }
 
-	public int getBlacks(int position) {
-		return game.getBlacks(position);
-	}
+    public int getBlacks(int position) {
+        if (this.tcpip == null) {
+            return this.game.getBlacks(position);
+        } else {
+            this.tcpip.send(FrameType.GETBLACKS.name());
+            this.tcpip.send(position);
+            return this.tcpip.receiveInt();
+        }
+    }
 
-	public int getWhites(int position) {
-		return game.getWhites(position);
-	}
+    public int getWhites(int position) {
+        if (this.tcpip == null) {
+            return this.game.getWhites(position);
+        } else {
+            this.tcpip.send(FrameType.GETWHITES.name());
+            this.tcpip.send(position);
+            return this.tcpip.receiveInt();
+        }
+    }
 
-	public int getWidth() {
-		return game.getWidth();
-	}
+    public int getWidth() {
+        if (this.tcpip == null) {
+            return this.game.getWidth();
+        } else {
+            this.tcpip.send(FrameType.GETWIDTH.name());
+            return this.tcpip.receiveInt();
+        }
+    }
 
 }
