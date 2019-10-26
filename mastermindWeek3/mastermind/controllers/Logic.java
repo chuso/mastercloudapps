@@ -10,7 +10,7 @@ import mastermindWeek3.mastermind.models.StateValue;
 public class Logic {
 
 	private Session session;
-	private Map<StateValue, AcceptorController> controllers;
+	protected Map<StateValue, AcceptorController> controllers;
 	private TCPIP tcpip;
 
 	public Logic(Boolean isStandalone) {
