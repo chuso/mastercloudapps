@@ -1,14 +1,10 @@
 package mastermindWeek3.mastermind.distributed;
 
-import mastermindWeek3.mastermind.controllers.Logic;
+import mastermindWeek3.mastermind.controllers.implementation.LogicImplementation;
 import mastermindWeek3.mastermind.distributed.dispatchers.*;
 import mastermindWeek3.mastermind.models.StateValue;
 
-public class LogicServer extends Logic {
-
-    public LogicServer() {
-        super(true);
-    }
+public class LogicImplementationServer extends LogicImplementation {
 
     public void createDispatchers(DispatcherPrototype dispatcherPrototype) {
         dispatcherPrototype.add(FrameType.START, new StartDispatcher(this.controllers.get(StateValue.INITIAL)));

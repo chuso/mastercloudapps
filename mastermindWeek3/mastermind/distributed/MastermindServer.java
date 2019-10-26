@@ -6,11 +6,11 @@ public class MastermindServer {
 
     private DispatcherPrototype dispatcherPrototype;
 
-    private LogicServer logicServer;
+    private LogicImplementationServer logicServer;
 
     private MastermindServer() {
         this.dispatcherPrototype = new DispatcherPrototype();
-        this.logicServer = new LogicServer();
+        this.logicServer = new LogicImplementationServer();
         this.logicServer.createDispatchers(this.dispatcherPrototype);
     }
 
