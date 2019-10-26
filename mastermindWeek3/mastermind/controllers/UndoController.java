@@ -2,7 +2,7 @@ package mastermindWeek3.mastermind.controllers;
 
 import mastermindWeek3.mastermind.models.Session;
 
-class UndoController extends Controller {
+public class UndoController extends Controller {
 
     public UndoController(Session session) {
         super(session);
