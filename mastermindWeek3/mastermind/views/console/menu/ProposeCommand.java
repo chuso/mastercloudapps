@@ -15,7 +15,7 @@ public class ProposeCommand extends Command {
     protected void execute() {
         Error error;
         do {
-            error = this.playController.addProposedCombination(
+            error = ((PlayController) this.acceptorController).addProposedCombination(
                 new CombinationReader().read()
             );
             if (error != null) {

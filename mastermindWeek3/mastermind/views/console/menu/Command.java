@@ -1,14 +1,14 @@
 package mastermindWeek3.mastermind.views.console.menu;
 
-import mastermindWeek3.mastermind.controllers.PlayController;
+import mastermindWeek3.mastermind.controllers.AcceptorController;
 
 public abstract class Command extends mastermindWeek3.santaTecla.utils.Command {
 
-    protected PlayController playController;
+    protected AcceptorController acceptorController;
 
-    protected Command(String title, PlayController playController) {
+    protected Command(String title, AcceptorController acceptorController) {
         super(title);
-        this.playController = playController;
+        this.acceptorController = acceptorController;
     }
 
 }
