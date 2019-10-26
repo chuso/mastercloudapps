@@ -23,10 +23,6 @@ public class PlayController extends AcceptorController {
         return proposalController.addProposedCombination(colors);
     }
 
-    public List<Color> getColors(int position) {
-        return proposalController.getColors(position);
-    }
-
     public void undo() {
         undoController.undo();
     }
@@ -41,26 +37,6 @@ public class PlayController extends AcceptorController {
 
     public boolean redoable() {
         return redoController.redoable();
-    }
-
-    public boolean isWinner() {
-        return proposalController.isWinner();
-    }
-
-    public boolean isLoser() {
-        return proposalController.isLooser();
-    }
-
-    public int getAttempts() {
-        return this.proposalController.getAttempts();
-    }
-
-    public int getBlacks(int position) {
-        return this.proposalController.getBlacks(position);
-    }
-
-    public int getWhites(int position) {
-        return this.proposalController.getWhites(position);
     }
 
     @Override
