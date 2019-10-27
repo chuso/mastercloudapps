@@ -1,8 +1,5 @@
 package mastermindWeek3.mastermind.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +86,22 @@ public class Game implements Originator {
 		return Combination.getWidth();
 	}
 
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
+	}
+
+	public List<ProposedCombination> getProposedCombinations() {
+		return this.proposedCombinations;
+	}
+
+	public List<Result> getResults() {
+		return this.results;
+	}
+
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
+	}
+
 	public Memento createMemento() {
 		GameMemento memento = new GameMemento();
 		memento.setSecretCombination(this.secretCombination.copy());
@@ -113,49 +126,6 @@ public class Game implements Originator {
 		this.results = new ArrayList<Result>();
 		for (int i = 0; i < attempts; i++) {
 			this.results.add(gameMemento.getResult(i).copy());
-		}
-	}
-
-	void save(FileWriter fileWriter) {
-		this.secretCombination.save(fileWriter);
-		this.saveAttempts(fileWriter);
-		for (ProposedCombination proposedCombination : proposedCombinations) {
-			proposedCombination.save(fileWriter);
-		}
-		for (Result result : results) {
-			result.save(fileWriter);
-		}
-	}
-
-	private void saveAttempts(FileWriter fileWriter) {
-		try {
-			fileWriter.write(this.attempts + "\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	void load(BufferedReader bufferedReader) {
-		this.secretCombination.load(bufferedReader);
-		this.loadAttempts(bufferedReader);
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		for (int i = 0; i < attempts; i++) {
-			ProposedCombination proposedCombination = new ProposedCombination();
-			proposedCombination.load(bufferedReader);
-			this.proposedCombinations.add(proposedCombination);
-		}
-		for (int i = 0; i < attempts; i++) {
-			Result result = new Result();
-			result.load(bufferedReader);
-			this.results.add(result);
-		}
-	}
-
-	private void loadAttempts(BufferedReader bufferedReader) {
-		try {
-			this.attempts = Integer.valueOf(bufferedReader.readLine());
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 

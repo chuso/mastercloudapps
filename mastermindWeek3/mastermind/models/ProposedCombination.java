@@ -4,7 +4,7 @@ import java.util.List;
 
 import mastermindWeek3.mastermind.types.Color;
 
-class ProposedCombination extends Combination {
+public class ProposedCombination extends Combination {
 
 	public ProposedCombination() {
 	}

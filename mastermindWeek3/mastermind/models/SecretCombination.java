@@ -5,7 +5,7 @@ import java.util.Random;
 
 import mastermindWeek3.mastermind.types.Color;
 
-class SecretCombination extends Combination {
+public class SecretCombination extends Combination {
 
 	SecretCombination() {
 		for(Color color: Color.values()) {

@@ -3,11 +3,15 @@ package mastermindWeek3.mastermind.controllers.implementation;
 import mastermindWeek3.mastermind.controllers.StartController;
 import mastermindWeek3.mastermind.models.Session;
 import mastermindWeek3.mastermind.models.SessionImplementation;
+import mastermindWeek3.mastermind.models.DAO.SessionImplementationDAO;
 
 public class StartControllerImplementation extends StartController {
 
-    public StartControllerImplementation(Session session) {
+    private final SessionImplementationDAO sessionImplementationDAO;
+
+    public StartControllerImplementation(Session session, SessionImplementationDAO sessionImplementationDAO) {
         super(session);
+        this.sessionImplementationDAO = sessionImplementationDAO;
     }
 
     @Override
@@ -17,12 +21,12 @@ public class StartControllerImplementation extends StartController {
 
     @Override
     public void start(String name) {
-        ((SessionImplementation) this.session).load(name);
+        sessionImplementationDAO.load(name);
     }
 
     @Override
     public String[] getGamesNames() {
-        return ((SessionImplementation) this.session).getGamesNames();
+        return sessionImplementationDAO.getGamesNames();
     }
 
 }
