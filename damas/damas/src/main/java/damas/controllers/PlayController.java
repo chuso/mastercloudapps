@@ -4,9 +4,10 @@ import damas.models.Game;
 import damas.models.Coordinate;
 import damas.models.Piece;
 
-class PlayController{
+class PlayController extends AcceptorController {
 
     public PlayController(Game game) {
+		super(game);
 	}
 
 	public Error move(Coordinate origin, Coordinate target){
@@ -16,4 +17,5 @@ class PlayController{
 	public Piece getPiece(Coordinate origin) {
 		return null;
 	}
+
 }

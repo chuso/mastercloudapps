@@ -1,6 +1,6 @@
 package damas.models;
 
-public class Piece {
+public abstract class Piece {
 
 	public Color getColor() {
 		return null;
