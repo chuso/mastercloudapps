@@ -1,6 +1,5 @@
 package mastermind.views.console;
 
-import mastermind.controllers.Controller;
 import mastermind.views.MessageView;
 import santaTecla.utils.WithConsoleView;
 

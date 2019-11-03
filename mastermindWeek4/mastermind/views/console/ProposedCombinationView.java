@@ -3,7 +3,6 @@ package mastermind.views.console;
 import java.util.ArrayList;
 import java.util.List;
 
-import mastermind.controllers.ProposalController;
 import mastermind.types.Color;
 import mastermind.views.console.ColorView;
 import santaTecla.utils.WithConsoleView;
