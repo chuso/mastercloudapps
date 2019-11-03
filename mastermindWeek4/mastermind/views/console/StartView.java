@@ -8,8 +8,12 @@ class StartView extends WithConsoleView {
 	
 	void interact(StartController startController) {
 		startController.start();
+		this.print(startController.getWidth());
+	}
+
+	public void print(int combinationWidth) {
 		this.console.writeln(MessageView.TITLE.getMessage());
-		new SecretCombinationView().writeln(startController.getWidth());
+		new SecretCombinationView().writeln(combinationWidth);
 	}
 
 }
