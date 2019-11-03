@@ -1,0 +1,41 @@
+class Mastermind
+note left
+public void play(){
+  controllers.get(session.getValue()).control();
+}
+end note
+Mastermind *-down-> Session
+Mastermind *-down-> StartController
+Mastermind *-down-> ProposalController
+Mastermind *-down-> ResumeController
+
+
+abstract class Controller{
++{abstract} void control()
+}
+Controller --> Session
+Controller <|-down- StartController
+Controller <|-down- ProposalController
+Controller <|-down- ResumeController
+
+class Session
+Session *-down-> State
+Session *-down-> Game
+
+class StartController {
++void control()
+}
+note right 
+public void control(){
+new GameView().showTitle();
+session.next();
+}
+end note
+
+class ProposalController {
++void control()
+}
+
+class ResumeController {
++void control()
+}
