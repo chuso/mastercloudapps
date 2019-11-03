@@ -13,10 +13,6 @@ public abstract class Controller {
 		this.game = game;
 		this.state = state;
 	}
-	
-	public int getWidth() {
-		return this.game.getWidth();
-	}
 
 	public abstract void accept(ControllersVisitor controllersVisitor);
 

@@ -12,6 +12,10 @@ public class StartController extends Controller {
 	public void start() {
 		this.state.next();
 	}
+
+	public int getWidth() {
+		return this.game.getWidth();
+	}
 	
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
