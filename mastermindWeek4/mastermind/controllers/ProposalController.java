@@ -47,21 +47,9 @@ public class ProposalController extends Controller {
 	public boolean isLooser() {
 		return this.game.isLooser();
 	}
-	
-	public int getAttempts() {
-		return this.game.getAttempts();
-	}
 
-	public List<Color> getColors(int position) {
-		return this.game.getColors(position);
-	}
-
-	public int getBlacks(int position) {
-		return this.game.getBlacks(position);
-	}
-
-	public int getWhites(int position) {
-		return this.game.getWhites(position);
+	public Game getGame() {
+		return this.game;
 	}
 	
 	@Override

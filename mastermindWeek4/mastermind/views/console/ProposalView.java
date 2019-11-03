@@ -3,6 +3,7 @@ package mastermind.views.console;
 import java.util.List;
 
 import mastermind.controllers.ProposalController;
+import mastermind.models.Game;
 import mastermind.types.Color;
 import mastermind.types.Error;
 import mastermind.views.console.ErrorView;
@@ -20,7 +21,7 @@ class ProposalView extends WithConsoleView {
 				this.printError(error);
 			}
 		} while (error != null);
-		this.printGame(proposalController);
+		this.printGame(proposalController.getGame());
 		if (proposalController.isWinner()) {
 			this.console.writeln(MessageView.WINNER.getMessage());
 		} else if (proposalController.isLooser()) {
@@ -36,15 +37,15 @@ class ProposalView extends WithConsoleView {
 		new ErrorView(error).writeln();
 	}
 
-	public void printGame(ProposalController proposalController) {
+	public void printGame(Game game) {
 		this.console.writeln();
-		new AttemptsView().writeln(proposalController.getAttempts());
-		new SecretCombinationView().writeln(proposalController.getWidth());
-		for (int i = 0; i < proposalController.getAttempts(); i++) {
-			new ProposedCombinationView().write(proposalController.getColors(i));
+		new AttemptsView().writeln(game.getAttempts());
+		new SecretCombinationView().writeln(game.getWidth());
+		for (int i = 0; i < game.getAttempts(); i++) {
+			new ProposedCombinationView().write(game.getColors(i));
 			new ResultView().writeln(
-				proposalController.getBlacks(i),
-				proposalController.getWhites(i)
+				game.getBlacks(i),
+				game.getWhites(i)
 			);
 		}
 	}
