@@ -23,9 +23,9 @@ class ProposalView extends WithConsoleView {
 		} while (error != null);
 		this.printGame(proposalController.getGame());
 		if (proposalController.isWinner()) {
-			this.console.writeln(MessageView.WINNER.getMessage());
+			this.printIsWinner();
 		} else if (proposalController.isLooser()) {
-			this.console.writeln(MessageView.LOOSER.getMessage());
+			this.printIsLoser();
 		}
 	}
 
@@ -48,6 +48,14 @@ class ProposalView extends WithConsoleView {
 				game.getWhites(i)
 			);
 		}
+	}
+
+	public void printIsWinner() {
+		this.console.writeln(MessageView.WINNER.getMessage());
+	}
+
+	public void printIsLoser() {
+		this.console.writeln(MessageView.LOOSER.getMessage());
 	}
 
 }
