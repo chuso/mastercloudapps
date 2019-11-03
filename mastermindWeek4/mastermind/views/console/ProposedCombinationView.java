@@ -11,14 +11,8 @@ import mastermind.views.MessageView;
 
 class ProposedCombinationView extends WithConsoleView {
 	
-	private ProposalController proposalController;
-	
-	ProposedCombinationView(ProposalController proposalController) {
-		this.proposalController = proposalController;
-	}
-	
-	void write(int position) {
-		for (Color color : this.proposalController.getColors(position)) {
+	void write(List<Color> colors) {
+		for (Color color : colors) {
 			new ColorView(color).write();
 		}
 	}

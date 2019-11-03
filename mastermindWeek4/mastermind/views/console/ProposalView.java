@@ -14,7 +14,7 @@ class ProposalView extends WithConsoleView {
 	void interact(ProposalController proposalController) {
 		Error error;
 		do {
-			List<Color> colors = new ProposedCombinationView(proposalController).read();
+			List<Color> colors = new ProposedCombinationView().read();
 			error = proposalController.addProposedCombination(colors);
 			if (error != null) {
 				new ErrorView(error).writeln();
@@ -24,7 +24,7 @@ class ProposalView extends WithConsoleView {
 		new AttemptsView(proposalController).writeln();
 		new SecretCombinationView().writeln(proposalController.getWidth());
 		for (int i = 0; i < proposalController.getAttempts(); i++) {
-			new ProposedCombinationView(proposalController).write(i);
+			new ProposedCombinationView().write(proposalController.getColors(i));
 			new ResultView(proposalController).writeln(i);
 		}
 		if (proposalController.isWinner()) {
