@@ -25,7 +25,10 @@ class ProposalView extends WithConsoleView {
 		new SecretCombinationView().writeln(proposalController.getWidth());
 		for (int i = 0; i < proposalController.getAttempts(); i++) {
 			new ProposedCombinationView().write(proposalController.getColors(i));
-			new ResultView(proposalController).writeln(i);
+			new ResultView().writeln(
+				proposalController.getBlacks(i),
+				proposalController.getWhites(i)
+			);
 		}
 		if (proposalController.isWinner()) {
 			this.console.writeln(MessageView.WINNER.getMessage());
