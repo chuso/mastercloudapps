@@ -7,7 +7,12 @@ import santaTecla.utils.YesNoDialog;
 class ResumeView {
 
 	void interact(ResumeController resumeController) {
-		resumeController.resume(new YesNoDialog().read(MessageView.RESUME.getMessage()));
+		boolean resume = this.resume();
+		resumeController.resume(resume);
+	}
+
+	public boolean resume() {
+		return new YesNoDialog().read(MessageView.RESUME.getMessage());
 	}
 	
 }
