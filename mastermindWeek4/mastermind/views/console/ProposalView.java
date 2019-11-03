@@ -20,16 +20,7 @@ class ProposalView extends WithConsoleView {
 				this.printError(error);
 			}
 		} while (error != null);
-		this.console.writeln();
-		new AttemptsView().writeln(proposalController.getAttempts());
-		new SecretCombinationView().writeln(proposalController.getWidth());
-		for (int i = 0; i < proposalController.getAttempts(); i++) {
-			new ProposedCombinationView().write(proposalController.getColors(i));
-			new ResultView().writeln(
-				proposalController.getBlacks(i),
-				proposalController.getWhites(i)
-			);
-		}
+		this.printGame(proposalController);
 		if (proposalController.isWinner()) {
 			this.console.writeln(MessageView.WINNER.getMessage());
 		} else if (proposalController.isLooser()) {
@@ -43,6 +34,19 @@ class ProposalView extends WithConsoleView {
 
 	public void printError(Error error) {
 		new ErrorView(error).writeln();
+	}
+
+	public void printGame(ProposalController proposalController) {
+		this.console.writeln();
+		new AttemptsView().writeln(proposalController.getAttempts());
+		new SecretCombinationView().writeln(proposalController.getWidth());
+		for (int i = 0; i < proposalController.getAttempts(); i++) {
+			new ProposedCombinationView().write(proposalController.getColors(i));
+			new ResultView().writeln(
+				proposalController.getBlacks(i),
+				proposalController.getWhites(i)
+			);
+		}
 	}
 
 }
