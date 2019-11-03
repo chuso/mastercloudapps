@@ -6,15 +6,12 @@ import santaTecla.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
 	
-	private Controller controller;
-	
-	SecretCombinationView(Controller controller) {
+	SecretCombinationView() {
 		super();
-		this.controller = controller;
 	}
 	
-	void writeln() {
-		for (int i = 0; i < this.controller.getWidth(); i++) {
+	void writeln(int combinationWidth) {
+		for (int i = 0; i < combinationWidth; i++) {
 			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
