@@ -14,7 +14,7 @@ class ProposalView extends WithConsoleView {
 	void interact(ProposalController proposalController) {
 		Error error;
 		do {
-			List<Color> colors = new ProposedCombinationView().read();
+			List<Color> colors = this.readColors();
 			error = proposalController.addProposedCombination(colors);
 			if (error != null) {
 				new ErrorView(error).writeln();
@@ -32,6 +32,10 @@ class ProposalView extends WithConsoleView {
 		} else if (proposalController.isLooser()) {
 			this.console.writeln(MessageView.LOOSER.getMessage());
 		}
+	}
+
+	public List<Color> readColors() {
+		return new ProposedCombinationView().read();
 	}
 
 }
