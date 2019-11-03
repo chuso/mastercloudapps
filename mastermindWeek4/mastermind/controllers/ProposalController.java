@@ -7,6 +7,7 @@ import mastermind.models.Game;
 import mastermind.models.State;
 import mastermind.types.Color;
 import mastermind.types.Error;
+import mastermind.views.console.ProposalView;
 
 public class ProposalController extends Controller {
 
@@ -14,7 +15,26 @@ public class ProposalController extends Controller {
 		super(game, state);
 	}
 
-	public Error addProposedCombination(List<Color> colors) {
+	@Override
+	public void control() {
+		ProposalView proposalView = new ProposalView();
+		Error error;
+		do {
+			List<Color> colors = proposalView.readColors();
+			error = this.addProposedCombination(colors);
+			if (error != null) {
+				proposalView.printError(error);
+			}
+		} while (error != null);
+		proposalView.printGame(this.getGame());
+		if (this.isWinner()) {
+			proposalView.printIsWinner();
+		} else if (this.isLoser()) {
+			proposalView.printIsLoser();
+		}
+	}
+
+	private Error addProposedCombination(List<Color> colors) {
 		Error error = null;
 		if (colors.size() != Combination.getWidth()) {
 			error = Error.WRONG_LENGTH;
@@ -40,21 +60,16 @@ public class ProposalController extends Controller {
 		return error;	
 	}
 
-	public boolean isWinner() {
+	private boolean isWinner() {
 		return this.game.isWinner();
 	}
 
-	public boolean isLooser() {
+	private boolean isLoser() {
 		return this.game.isLooser();
 	}
 
-	public Game getGame() {
+	private Game getGame() {
 		return this.game;
-	}
-	
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
 	}
 
 }

@@ -10,24 +10,7 @@ import mastermind.views.console.ErrorView;
 import santaTecla.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
-class ProposalView extends WithConsoleView {
-
-	void interact(ProposalController proposalController) {
-		Error error;
-		do {
-			List<Color> colors = this.readColors();
-			error = proposalController.addProposedCombination(colors);
-			if (error != null) {
-				this.printError(error);
-			}
-		} while (error != null);
-		this.printGame(proposalController.getGame());
-		if (proposalController.isWinner()) {
-			this.printIsWinner();
-		} else if (proposalController.isLooser()) {
-			this.printIsLoser();
-		}
-	}
+public class ProposalView extends WithConsoleView {
 
 	public List<Color> readColors() {
 		return new ProposedCombinationView().read();

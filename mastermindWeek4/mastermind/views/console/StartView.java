@@ -4,12 +4,7 @@ import mastermind.controllers.StartController;
 import mastermind.views.MessageView;
 import santaTecla.utils.WithConsoleView;
 
-class StartView extends WithConsoleView {
-	
-	void interact(StartController startController) {
-		startController.start();
-		this.print(startController.getWidth());
-	}
+public class StartView extends WithConsoleView {
 
 	public void print(int combinationWidth) {
 		this.console.writeln(MessageView.TITLE.getMessage());
