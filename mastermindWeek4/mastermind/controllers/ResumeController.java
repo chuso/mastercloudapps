@@ -2,17 +2,20 @@ package mastermind.controllers;
 
 import mastermind.models.Game;
 import mastermind.models.State;
-import mastermind.views.console.ResumeView;
+import mastermind.views.ResumeView;
 
 public class ResumeController extends Controller {
 
-	public ResumeController(Game game, State state) {
+	private ResumeView resumeView;
+
+	public ResumeController(ResumeView resumeView, Game game, State state) {
 		super(game, state);
+		this.resumeView = resumeView;
 	}
 
 	@Override
 	public void control() {
-		boolean resume = new ResumeView().resume();
+		boolean resume = resumeView.resume();
 		this.resume(resume);
 	}
 	

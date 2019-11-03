@@ -7,17 +7,19 @@ import mastermind.models.Game;
 import mastermind.models.State;
 import mastermind.types.Color;
 import mastermind.types.Error;
-import mastermind.views.console.ProposalView;
+import mastermind.views.ProposalView;
 
 public class ProposalController extends Controller {
 
-	public ProposalController(Game game, State state) {
+	private ProposalView proposalView;
+
+	public ProposalController(ProposalView proposalView, Game game, State state) {
 		super(game, state);
+		this.proposalView = proposalView;
 	}
 
 	@Override
 	public void control() {
-		ProposalView proposalView = new ProposalView();
 		Error error;
 		do {
 			List<Color> colors = proposalView.readColors();
