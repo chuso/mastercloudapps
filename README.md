@@ -9,3 +9,4 @@ Personal projects for the Master in Cloud Applications from the URJC.
 * [MasterMind week 4](mastermindWeek4). MVP with passive view.
 * [Damas week 1](damas). Add test coverage on a stub of classes.
 * [Damas week 2](damasWeek2). Add complete design of the game and cover also using mocks.
+* [Damas week 3](https://github.com/chuso/refactoring/). Apply known refactors to improve code maintainability.
